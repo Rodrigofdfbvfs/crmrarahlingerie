@@ -30,3 +30,4 @@ dist-ssr
 
 # CLI do Supabase (lixo de execucao)
 supabase/.temp
+.vercel

@@ -62,16 +62,16 @@ interface ModeConfig {
 
 const CONFIG: Record<PessoasMode, ModeConfig> = {
   leads: {
-    titulo: 'Leads',
-    subtitulo: 'Pessoas que ainda não foram atendidas.',
-    explicacao: 'Aqui você encontra as pessoas que entraram em contato, estão em atendimento ou têm um agendamento marcado.',
-    outraPagina: { rota: '/clientes', label: 'Ver Clientes' },
+    titulo: 'Novos contatos',
+    subtitulo: 'Potenciais revendedoras em negociação.',
+    explicacao: 'Aqui você encontra quem iniciou uma conversa e ainda está avançando até o primeiro pedido.',
+    outraPagina: { rota: '/clientes', label: 'Ver Revendedoras' },
     icone: Users,
     corIcone: MARCA,
-    botaoNovo: 'Novo Lead',
+    botaoNovo: 'Nova revendedora',
     arquivo: 'leads',
-    vazio: 'Nenhum lead nesse período.',
-    colunaData: { titulo: 'Agendamento', campo: 'data_agendamento', vazio: 'Sem agendamento' },
+    vazio: 'Nenhum novo contato nesse período.',
+    colunaData: { titulo: 'Videochamada', campo: 'data_agendamento', vazio: 'Sem videochamada' },
   },
   clientes: {
     titulo: 'Clientes',

@@ -2,14 +2,16 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
 import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/DashboardAtacado'
 import CRM from './pages/CRM'
 import Conversas from './pages/Conversas'
 import Agenda from './pages/Agenda'
 import Profissionais from './pages/Profissionais'
-import Leads from './pages/Leads'
-import Clientes from './pages/Clientes'
-import LeadDetail from './pages/LeadDetail'
+import NovosContatos from './pages/NovosContatos'
+import Revendedoras from './pages/Revendedoras'
+import RevendedoraDetail from './pages/RevendedoraDetail'
+import FollowUpsAtacado from './pages/FollowUpsAtacado'
+import ConfiguracoesComerciais from './pages/ConfiguracoesComerciais'
 import Configuracoes from './pages/Configuracoes'
 import Procedimentos from './pages/Procedimentos'
 import SecretariaIA from './pages/SecretariaIA'
@@ -31,9 +33,11 @@ export default function App() {
             <Route path="/servicos" element={<Procedimentos />} />
             <Route path="/atendente-ia" element={<SecretariaIA />} />
             <Route path="/token-api" element={<TokenApi />} />
-            <Route path="/leads" element={<Leads />} />
-            <Route path="/clientes" element={<Clientes />} />
-            <Route path="/leads/:id" element={<LeadDetail />} />
+            <Route path="/leads" element={<NovosContatos />} />
+            <Route path="/clientes" element={<Revendedoras />} />
+            <Route path="/leads/:id" element={<RevendedoraDetail />} />
+            <Route path="/follow-ups" element={<FollowUpsAtacado />} />
+            <Route path="/configuracoes-comerciais" element={<ConfiguracoesComerciais />} />
             <Route path="/configuracoes" element={<Configuracoes />} />
           </Route>
         </Route>

@@ -31,6 +31,16 @@ export interface Usuario {
   created_at: string
 }
 
+export interface PedidoRevendedora {
+  id: string
+  lead_id: string
+  data_pedido: string
+  valor: number
+  observacoes: string | null
+  created_at: string
+  updated_at: string
+}
+
 export interface ConfiguracoesClinica {
   id: string
   nome_clinica: string | null
@@ -183,6 +193,11 @@ export interface LeadClinica {
   assumido_por: string | null
   assumido_em: string | null
   created_at: string
+  cidade: string | null
+  interesses_atacado: string[]
+  ultima_compra: string | null
+  valor_ultimo_pedido: number | null
+  total_pedidos: number
 }
 
 export interface Consulta {

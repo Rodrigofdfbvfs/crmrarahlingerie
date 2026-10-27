@@ -10,7 +10,7 @@ import type { LeadStatus } from '../types'
  * Mantenha esta regra AQUI e só aqui: ela é usada pelas duas páginas e pela
  * tela de detalhe.
  */
-export const PATIENT_STATUS: LeadStatus[] = ['consulta_realizada', 'paciente_recorrente']
+export const PATIENT_STATUS: LeadStatus[] = ['consulta_realizada']
 
 export function isPaciente(status: LeadStatus) {
   return PATIENT_STATUS.includes(status)

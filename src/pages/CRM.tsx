@@ -97,13 +97,13 @@ const COLUMNS: ColumnConfig[] = [
   { status: 'iniciou_conversa',    label: ROTULO_LEAD.iniciou_conversa,    color: '#1E6E8C', bg: '#EAF3F6', dot: '#1E6E8C', pulse: true },
   { status: 'conversando',         label: ROTULO_LEAD.conversando,         color: '#4F46E5', bg: '#EEF2FF' },
   { status: 'consulta_agendada',   label: ROTULO_LEAD.consulta_agendada,   color: '#1A7A48', bg: '#E8F8EF' },
-  { status: 'consulta_realizada',  label: ROTULO_LEAD.consulta_realizada,  color: '#fff',    bg: '#14532D' },
-  { status: 'paciente_recorrente', label: ROTULO_LEAD.paciente_recorrente, color: '#7C3AED', bg: '#F3E8FF' },
   // E quem saiu dele: o cancelamento, e as três tentativas de trazer de volta.
   { status: 'consulta_cancelada',  label: ROTULO_LEAD.consulta_cancelada,  color: '#DC2626', bg: '#FEF2F2' },
   { status: 'follow_up_1_feito',   label: ROTULO_LEAD.follow_up_1_feito,   color: '#D97706', bg: '#FFFBEB' },
   { status: 'follow_up_2_feito',   label: ROTULO_LEAD.follow_up_2_feito,   color: '#D97706', bg: '#FFFBEB' },
+  { status: 'consulta_realizada',  label: ROTULO_LEAD.consulta_realizada,  color: '#fff',    bg: '#14532D' },
   { status: 'follow_up_3_feito',   label: ROTULO_LEAD.follow_up_3_feito,   color: '#D97706', bg: '#FFFBEB' },
+  { status: 'paciente_recorrente', label: ROTULO_LEAD.paciente_recorrente, color: '#7C3AED', bg: '#F3E8FF' },
 ]
 
 const STATUS_MAP = Object.fromEntries(COLUMNS.map((c) => [c.status, c])) as Record<LeadStatus, ColumnConfig>
@@ -249,9 +249,9 @@ function LeadCard({ lead, isDragging = false, overlay = false }: LeadCardProps) 
           <div style={{ fontSize: 13.5, fontWeight: 700, color: '#16232B', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {lead.nome_lead ?? 'Sem nome'}
           </div>
-          {lead.procedimento_interesse && (
+          {lead.interesses_atacado?.length > 0 && (
             <div style={{ fontSize: 12, color: '#6B818C', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {lead.procedimento_interesse}
+              {lead.interesses_atacado.join(', ')}
             </div>
           )}
         </div>

@@ -15,7 +15,7 @@
  */
 
 export type PeriodKey =
-  | 'today' | 'yesterday' | 'last7' | 'last14'
+  | 'today' | 'yesterday' | 'last7' | 'last14' | 'last30' | 'last60'
   | 'this_month' | 'last_month' | 'this_year' | 'last_year'
   | 'all' | 'custom'
   /**
@@ -73,6 +73,8 @@ export function periodosFixos(hoje: Date = new Date()): { chave: PeriodKey; rotu
     { chave: 'yesterday', rotulo: 'Ontem' },
     { chave: 'last7', rotulo: 'Últimos 7 dias' },
     { chave: 'last14', rotulo: 'Últimos 14 dias' },
+    { chave: 'last30', rotulo: 'Últimos 30 dias' },
+    { chave: 'last60', rotulo: 'Últimos 60 dias' },
     { chave: 'this_month', rotulo: 'Este mês' },
     { chave: 'last_month', rotulo: 'Mês passado' },
     ...meses,
@@ -121,6 +123,14 @@ export function getPeriodRange(key: PeriodKey, custom?: DateRange): DateRange {
     }
     case 'last14': {
       const s = new Date(today); s.setDate(s.getDate() - 13)
+      return { start: s, end: endOfDay(now) }
+    }
+    case 'last30': {
+      const s = new Date(today); s.setDate(s.getDate() - 29)
+      return { start: s, end: endOfDay(now) }
+    }
+    case 'last60': {
+      const s = new Date(today); s.setDate(s.getDate() - 59)
       return { start: s, end: endOfDay(now) }
     }
     case 'this_month':

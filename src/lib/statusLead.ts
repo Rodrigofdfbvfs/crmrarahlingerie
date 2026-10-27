@@ -44,15 +44,15 @@ export const STATUS_LEAD: Record<LeadStatus, EstiloStatus> = {
 }
 
 export const ROTULO_LEAD: Record<LeadStatus, string> = {
-  iniciou_conversa:    'Iniciou Conversa',
-  conversando:         'Conversando',
-  consulta_agendada:   'Agendou',
-  consulta_cancelada:  'Cancelou',
-  follow_up_1_feito:   'Follow-up 1',
-  follow_up_2_feito:   'Follow-up 2',
-  follow_up_3_feito:   'Follow-up 3',
-  consulta_realizada:  'Compareceu',
-  paciente_recorrente: 'Cliente Recorrente',
+  iniciou_conversa:    'Novo contato',
+  conversando:         'Em atendimento',
+  consulta_agendada:   'Perfil identificado',
+  consulta_cancelada:  'Catálogo enviado',
+  follow_up_1_feito:   'Escolhendo produtos',
+  follow_up_2_feito:   'Aguardando pedido',
+  follow_up_3_feito:   'Follow-up',
+  consulta_realizada:  'Pedido realizado',
+  paciente_recorrente: 'Sem interesse',
 }
 
 export const STATUS_CONSULTA: Record<ConsultaStatus, EstiloStatus> = {

@@ -7,6 +7,7 @@ import { formatarParaExibicao } from '../lib/telefones'
 import type { LeadClinica } from '../types'
 import { MARCA } from '../lib/marca'
 import NovaRevendedoraModal from '../components/NovaRevendedoraModal'
+import ExcluirPessoaButton from '../components/ExcluirPessoaButton'
 
 export default function Revendedoras() {
   const [itens, setItens] = useState<LeadClinica[]>([])
@@ -22,9 +23,9 @@ export default function Revendedoras() {
     <div style={{ position: 'relative', maxWidth: 430, margin: '22px 0' }}><Search size={16} style={{ position: 'absolute', left: 12, top: 11, color: '#6B818C' }} /><input value={busca} onChange={(e) => setBusca(e.target.value)} placeholder="Buscar por nome, WhatsApp ou cidade" style={{ width: '100%', boxSizing: 'border-box', padding: '10px 12px 10px 36px', border: '1px solid #DCE6EA', borderRadius: 9 }} /></div>
     <div style={{ background: '#fff', border: '1px solid #DCE6EA', borderRadius: 14, overflow: 'hidden' }}>
       {filtrados.length === 0 ? <div style={{ padding: 50, textAlign: 'center', color: '#6B818C' }}><Users size={30} /><div>Nenhuma revendedora encontrada.</div></div> :
-      <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}><thead><tr style={{ background: '#F7FAFB' }}>{['Revendedora','Cidade','Interesses','Última compra','Último pedido','Total comprado'].map(h => <th key={h} style={{ textAlign: 'left', padding: 13, color: '#6B818C' }}>{h}</th>)}</tr></thead><tbody>{filtrados.map(x => <tr key={x.id} onClick={() => navigate(`/leads/${x.id}`)} style={{ borderTop: '1px solid #EDF2F4', cursor: 'pointer' }}>
+      <div style={{ overflowX: 'auto' }}><table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}><thead><tr style={{ background: '#F7FAFB' }}>{['Revendedora','Cidade','Interesses','Última compra','Último pedido','Total comprado',''].map(h => <th key={h} style={{ textAlign: 'left', padding: 13, color: '#6B818C' }}>{h}</th>)}</tr></thead><tbody>{filtrados.map(x => <tr key={x.id} onClick={() => navigate(`/leads/${x.id}`)} style={{ borderTop: '1px solid #EDF2F4', cursor: 'pointer' }}>
         <td style={{ padding: 13 }}><strong style={{ color: '#16232B' }}>{x.nome_lead || 'Sem nome'}</strong><div style={{ color: '#6B818C', marginTop: 3 }}>{x.whatsapp_lead ? formatarParaExibicao(x.whatsapp_lead) : '—'}</div></td>
-        <td style={{ padding: 13 }}>{x.cidade || '—'}</td><td style={{ padding: 13 }}>{x.interesses_atacado?.join(', ') || '—'}</td><td style={{ padding: 13 }}>{dataBR(x.ultima_compra)}</td><td style={{ padding: 13 }}>{moeda(x.valor_ultimo_pedido)}</td><td style={{ padding: 13, fontWeight: 700, color: MARCA }}>{moeda(x.valor_pago_acumulado)}</td>
+        <td style={{ padding: 13 }}>{x.cidade || '—'}</td><td style={{ padding: 13 }}>{x.interesses_atacado?.join(', ') || '—'}</td><td style={{ padding: 13 }}>{dataBR(x.ultima_compra)}</td><td style={{ padding: 13 }}>{moeda(x.valor_ultimo_pedido)}</td><td style={{ padding: 13, fontWeight: 700, color: MARCA }}>{moeda(x.valor_pago_acumulado)}</td><td style={{padding:10}}><ExcluirPessoaButton pessoa={x} onDeleted={()=>setItens(atual=>atual.filter(i=>i.id!==x.id))}/></td>
       </tr>)}</tbody></table></div>}
     </div>
     {modal && <NovaRevendedoraModal comPrimeiroPedido onClose={()=>setModal(false)} onSaved={carregar}/>} 
